@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>LUNÉRA — Collection</title>
+
+<link rel="icon" type="image/png" href="/lunera/lunera-logo.png?v=6">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box
+}
+
+html{
+scroll-behavior:smooth
+}
+
+body{
+background:#f7f4ef;
+color:#151212;
+font-family:Arial,sans-serif;
+overflow-x:hidden
+}
+
+button,
+input{
+font-family:inherit
+}
+
+/* =========================
+HEADER
+========================= */
+
+header{
+background:#151212;
+color:white;
+padding:27px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:20
+}
+
+.logo{
+color:white;
+text-decoration:none;
+font:500 30px 'Bodoni Moda',serif;
+letter-spacing:9px;
+white-space:nowrap
+}
+
+nav{
+display:flex;
+gap:25px;
+align-items:center
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font:9px 'Montserrat',sans-serif;
+letter-spacing:2px;
+text-transform:uppercase;
+transition:.2s
+}
+
+nav a:hover{
+opacity:.65
+}
+
+.bag{
+border:1px solid #ffffffaa;
+padding:10px 16px
+}
+
+.bag-count{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:18px;
+height:18px;
+margin-left:6px;
+padding:0 5px;
+border-radius:50%;
+background:#f7f4ef;
+color:#151212;
+font:8px 'Montserrat',sans-serif;
+letter-spacing:0
+}
+
+/* =========================
+INTRO
+========================= */
+
+.page-intro{
+text-align:center;
+padding:90px 8% 65px
+}
+
+.page-small,
+.result-count{
+font:10px 'Montserrat',sans-serif;
+letter-spacing:4px;
+text-transform:uppercase;
+opacity:.5
+}
+
+.page-small{
+margin-bottom:22px
+}
+
+.page-intro h1{
+font:400 clamp(55px,7vw,95px)/.95 'Bodoni Moda',serif;
+margin-bottom:25px
+}
+
+.page-intro p{
+max-width:650px;
+margin:auto;
+font:11px/1.8 'Montserrat',sans-serif;
+opacity:.6
+}
+
+/* =========================
+CATEGORY BAR
+========================= */
+
+.category-bar{
+border-top:1px solid #15121222;
+border-bottom:1px solid #15121222;
+padding:18px 8%;
+display:flex;
+justify-content:center;
+gap:32px;
+overflow:auto;
+scrollbar-width:none
+}
+
+.category-bar::-webkit-scrollbar{
+display:none
+}
+
+.category-bar button{
+border:0;
+background:none;
+font:9px 'Montserrat',sans-serif;
+letter-spacing:2px;
+text-transform:uppercase;
+cursor:pointer;
+white-space:nowrap;
+color:#151212;
+padding:0 0 5px;
+border-bottom:1px solid transparent;
+transition:.2s
+}
+
+.category-bar button:hover{
+opacity:.55
+}
+
+.category-bar button.active{
+opacity:1;
+border-bottom:1px solid #151212
+}
+
+/* =========================
+FILTER AREA
+========================= */
+
+.filter-area{
+padding:40px 8% 15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:25px
+}
+
+.filter-buttons{
+display:flex;
+gap:10px
+}
+
+.filter-btn{
+border:1px solid #15121244;
+padding:10px 15px;
+background:none;
+font:9px 'Montserrat',sans-serif;
+letter-spacing:2px;
+cursor:pointer;
+transition:.25s
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+background:#151212;
+color:white
+}
+
+.search-wrap{
+display:flex;
+align-items:center;
+gap:10px
+}
+
+.search-input{
+width:230px;
+border:0;
+border-bottom:1px solid #15121255;
+background:transparent;
+padding:10px 2px;
+outline:none;
+font:10px 'Montserrat',sans-serif;
+letter-spacing:1px;
+color:#151212
+}
+
+.search-input::placeholder{
+color:#151212;
+opacity:.45
+}
+
+/* =========================
+PRODUCTS
+========================= */
+
+.products{
+padding:20px 8% 120px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:35px 22px
+}
+
+.product{
+min-width:0
+}
+
+.product-image{
+height:500px;
+position:relative;
+overflow:hidden;
+background:#e8e2da
+}
+
+.product-image a{
+display:block;
+width:100%;
+height:100%
+}
+
+.product-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.6s ease
+}
+
+.product:hover img{
+transform:scale(1.035)
+}
+
+.tag{
+position:absolute;
+top:18px;
+left:18px;
+background:#f7f4ef;
+padding:9px 12px;
+font:8px 'Montserrat',sans-serif;
+letter-spacing:2px
+}
+
+.product-info{
+padding:20px 2px
+}
+
+.category{
+font:8px 'Montserrat',sans-serif;
+letter-spacing:2px;
+opacity:.45;
+margin-bottom:8px
+}
+
+.name{
+font:500 25px 'Cormorant Garamond',serif;
+margin-bottom:6px
+}
+
+.name a{
+color:#151212;
+text-decoration:none
+}
+
+.price{
+font:11px 'Montserrat',sans-serif;
+letter-spacing:1px;
+opacity:.7;
+margin-bottom:15px
+}
+
+.actions{
+display:flex;
+gap:8px
+}
+
+.action{
+flex:1;
+text-align:center;
+text-decoration:none;
+border:1px solid #151212;
+padding:12px;
+font:8px 'Montserrat',sans-serif;
+letter-spacing:1.5px;
+color:#151212;
+transition:.25s
+}
+
+.action:hover{
+background:#151212;
+color:white
+}
+
+.action.buy{
+background:#17352b;
+color:white;
+border-color:#17352b
+}
+
+.action.buy:hover{
+background:#244d40;
+border-color:#244d40
+}
+
+.empty{
+grid-column:1/-1;
+text-align:center;
+padding:100px 20px;
+font:11px 'Montserrat',sans-serif;
+letter-spacing:2px;
+opacity:.55
+}
+
+/* =========================
+STATEMENT
+========================= */
+
+.statement{
+background:#17352b;
+color:white;
+text-align:center;
+padding:110px 8%
+}
+
+.statement h2{
+font:400 clamp(45px,6vw,80px) 'Bodoni Moda',serif;
+margin-bottom:25px
+}
+
+.statement p{
+font:10px 'Montserrat',sans-serif;
+letter-spacing:4px;
+opacity:.7
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+background:#151212;
+color:white;
+padding:70px 8% 30px
+}
+
+.footer-logo{
+font:500 32px 'Bodoni Moda',serif;
+letter-spacing:9px;
+margin-bottom:60px
+}
+
+.footer-columns{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:80px
+}
+
+.footer-column h4{
+font:18px 'Cormorant Garamond',serif;
+letter-spacing:3px;
+margin-bottom:22px
+}
+
+.footer-column a{
+display:block;
+color:white;
+text-decoration:none;
+font:12px 'Montserrat',sans-serif;
+margin:12px 0;
+opacity:.8;
+transition:.2s
+}
+
+.footer-column a:hover{
+opacity:1;
+transform:translateX(3px)
+}
+
+.footer-bottom{
+border-top:1px solid #ffffff33;
+margin-top:60px;
+padding-top:25px;
+font:10px 'Montserrat',sans-serif;
+letter-spacing:2px;
+opacity:.6
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:850px){
+
+header{
+padding:22px 6%
+}
+
+.logo{
+font-size:23px;
+letter-spacing:7px
+}
+
+nav{
+gap:15px
+}
+
+nav a:first-child{
+display:none
+}
+
+.page-intro{
+padding:70px 6% 50px
+}
+
+.page-intro h1{
+font-size:55px
+}
+
+.category-bar{
+justify-content:flex-start;
+padding:17px 6%
+}
+
+.filter-area{
+padding:30px 6% 10px;
+flex-wrap:wrap
+}
+
+.search-wrap{
+width:100%;
+order:2
+}
+
+.search-input{
+width:100%
+}
+
+.filter-buttons{
+order:1;
+width:100%
+}
+
+.filter-btn{
+flex:1
+}
+
+.products{
+padding:20px 6% 80px;
+grid-template-columns:repeat(2,1fr);
+gap:30px 12px
+}
+
+.product-image{
+height:380px
+}
+
+.name{
+font-size:21px
+}
+
+.actions{
+flex-direction:column
+}
+
+.footer-columns{
+grid-template-columns:1fr;
+gap:40px
+}
+
+.footer-logo{
+font-size:25px
+}
+
+}
+
+@media(max-width:500px){
+
+header{
+padding:20px 5%
+}
+
+.logo{
+font-size:20px;
+letter-spacing:5px
+}
+
+nav{
+gap:10px
+}
+
+.bag{
+padding:9px 10px
+}
+
+.products{
+grid-template-columns:1fr;
+gap:35px
+}
+
+.product-image{
+height:470px
+}
+
+.page-intro h1{
+font-size:48px
+}
+
+.category-bar{
+gap:24px
+}
+
+}
+
+/* =========================
+FADE
+========================= */
+
+.product{
+animation:productReveal .5s ease both
+}
+
+@keyframes productReveal{
+
+from{
+opacity:0;
+transform:translateY(12px)
+}
+
+to{
+opacity:1;
+transform:translateY(0)
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="logo">LUNÉRA</a>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="product.html">Collection</a>
+
+<a href="cart.html" class="bag">
+Bag <span class="bag-count" id="bagCount">0</span>
+</a>
+
+</nav>
+
+</header>
+
+
+<section class="page-intro">
+
+<div class="page-small">
+The LUNÉRA Collection
+</div>
+
+<h1>The Collection</h1>
+
+<p>
+Refined essentials designed around comfort, confidence and timeless elegance.
+</p>
+
+</section>
+
+
+<div class="category-bar" id="categoryBar"></div>
+
+
+<div class="filter-area">
+
+<div class="result-count" id="count">
+00 Pieces
+</div>
+
+<div class="filter-buttons">
+
+<button class="filter-btn" id="lowBtn" onclick="sortProducts('low')">
+Price Low
+</button>
+
+<button class="filter-btn" id="highBtn" onclick="sortProducts('high')">
+Price High
+</button>
+
+</div>
+
+<div class="search-wrap">
+
+<input
+type="search"
+id="searchInput"
+class="search-input"
+placeholder="Search the collection..."
+autocomplete="off"
+>
+
+</div>
+
+</div>
+
+
+<section class="products" id="products"></section>
+
+
+<section class="statement">
+
+<h2>
+Elegance in Every Layer.
+</h2>
+
+<p>
+COMFORT · CONFIDENCE · TIMELESS DESIGN
+</p>
+
+</section>
+
+
+<footer>
+
+<div class="footer-logo">
+LUNÉRA
+</div>
+
+<div class="footer-columns">
+
+<div class="footer-column">
+
+<h4>SHOP</h4>
+
+<div id="footerCategories"></div>
+
+</div>
+
+<div class="footer-column">
+
+<h4>HELP</h4>
+
+<a href="index.html#contact">Contact</a>
+<a href="#">Shipping</a>
+<a href="#">Returns</a>
+<a href="#">Size Guide</a>
+
+</div>
+
+<div class="footer-column">
+
+<h4>LUNÉRA</h4>
+
+<a href="index.html#about">Our Story</a>
+<a href="index.html#collection">Collection</a>
+<a href="#">Privacy</a>
+<a href="#">Terms</a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 LUNÉRA — ELEGANCE IN EVERY LAYER
+</div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+DEFAULT PRODUCTS
+========================= */
+
+const defaults=[
+
+{
+id:"signature-bra",
+name:"The Signature Bra",
+category:"Bras",
+price:"₹1,499",
+sizes:"32, 34, 36, 38, 40",
+image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1800&q=95",
+description:"A refined lace essential designed around everyday comfort, confident support and timeless LUNÉRA elegance."
+},
+
+{
+id:"everyday-brief",
+name:"The Everyday Brief",
+category:"Panties",
+price:"₹699",
+sizes:"S, M, L, XL",
+image:"https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=1800&q=95",
+description:"A refined everyday essential designed for comfortable wear and an effortless finish."
+},
+
+{
+id:"signature-set",
+name:"The Signature Set",
+category:"Lingerie Sets",
+price:"₹2,499",
+sizes:"32, 34, 36, 38, 40",
+image:"https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=1800&q=95",
+description:"A coordinated LUNÉRA set bringing together refined design, comfort and timeless elegance."
+},
+
+{
+id:"soft-form",
+name:"The Soft Form",
+category:"Bras",
+price:"₹1,299",
+sizes:"32, 34, 36, 38, 40",
+image:"https://images.unsplash.com/photo-1583743814966-8936f37f384c?auto=format&fit=crop&w=1800&q=95",
+description:"A softly structured everyday bra created for easy movement and comfortable support."
+},
+
+{
+id:"seamless-essential",
+name:"The Seamless Essential",
+category:"Essentials",
+price:"₹899",
+sizes:"S, M, L, XL",
+image:"https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=1800&q=95",
+description:"A clean seamless essential designed to sit smoothly beneath everyday outfits."
+},
+
+{
+id:"evening-set",
+name:"The Evening Set",
+category:"Nightwear",
+price:"₹1,899",
+sizes:"S, M, L, XL",
+image:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1800&q=95",
+description:"An elegant lounge set designed for relaxed evenings and effortless comfort."
+},
+
+{
+id:"lace-frame",
+name:"The Lace Frame",
+category:"Bras",
+price:"₹1,599",
+sizes:"32, 34, 36, 38, 40",
+image:"https://images.unsplash.com/photo-1506629905607-d9a0c1eecb3a?auto=format&fit=crop&w=1800&q=95",
+description:"A refined lace design combining delicate detailing with comfortable everyday wear."
+},
+
+{
+id:"pure-essential",
+name:"The Pure Essential",
+category:"Essentials",
+price:"₹799",
+sizes:"S, M, L, XL",
+image:"https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=1800&q=95",
+description:"A clean cotton essential created for dependable everyday comfort."
+},
+
+{
+id:"bridal-collection",
+name:"The Bridal Collection",
+category:"Lingerie Sets",
+price:"₹2,799",
+sizes:"32, 34, 36, 38, 40",
+image:"https://images.unsplash.com/photo-1571513722275-4b41940f54b8?auto=format&fit=crop&w=1800&q=95",
+description:"A carefully designed coordinated collection for special occasions, combining refined details with comfort."
+}
+
+];
+
+
+/* =========================
+LOAD DATA
+========================= */
+
+let products=[];
+
+try{
+
+const storedProducts=
+JSON.parse(localStorage.getItem("luneraProducts"));
+
+products=
+Array.isArray(storedProducts)
+?
+storedProducts
+:
+JSON.parse(JSON.stringify(defaults));
+
+}catch(error){
+
+products=
+JSON.parse(JSON.stringify(defaults));
+
+}
+
+
+let categories=[];
+
+try{
+
+const storedCategories=
+JSON.parse(localStorage.getItem("luneraCategories"));
+
+categories=
+Array.isArray(storedCategories) && storedCategories.length
+?
+storedCategories
+:
+["Bras","Panties","Lingerie Sets","Nightwear","Essentials"];
+
+}catch(error){
+
+categories=
+["Bras","Panties","Lingerie Sets","Nightwear","Essentials"];
+
+}
+
+
+/* =========================
+URL CATEGORY
+========================= */
+
+let selected=
+new URLSearchParams(location.search).get("category") ||
+"All";
+
+let searchTerm="";
+
+let currentSort="";
+
+
+/* =========================
+PRICE
+========================= */
+
+function money(value){
+
+return Number(
+String(value)
+.replace(/[₹,]/g,"")
+)||0;
+
+}
+
+
+/* =========================
+ESCAPING
+========================= */
+
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttr(value){
+
+return escapeHTML(value);
+
+}
+
+
+/* =========================
+CATEGORIES
+========================= */
+
+function renderCategories(){
+
+const bar=
+document.getElementById("categoryBar");
+
+bar.innerHTML=
+
+`<button data-cat="All">
+All
+</button>`+
+
+categories.map(category=>`
+
+<button data-cat="${escapeAttr(category)}">
+${escapeHTML(category)}
+</button>
+
+`).join("");
+
+
+document
+.querySelectorAll("[data-cat]")
+.forEach(button=>{
+
+button.onclick=()=>{
+
+selected=button.dataset.cat;
+
+history.replaceState(
+{},
+"",
+selected==="All"
+?
+"product.html"
+:
+"product.html?category="+
+encodeURIComponent(selected)
+);
+
+renderCategories();
+render();
+
+};
+
+});
+
+
+document
+.querySelectorAll("[data-cat]")
+.forEach(button=>{
+
+button.classList.toggle(
+"active",
+button.dataset.cat===selected
+);
+
+});
+
+}
+
+
+/* =========================
+FILTER PRODUCTS
+========================= */
+
+function getVisibleProducts(){
+
+let list=
+selected==="All"
+?
+[...products]
+:
+products.filter(
+product=>
+String(product.category).toLowerCase()===
+String(selected).toLowerCase()
+);
+
+
+if(searchTerm){
+
+const query=searchTerm.toLowerCase();
+
+list=list.filter(product=>
+
+String(product.name)
+.toLowerCase()
+.includes(query)
+
+||
+
+String(product.category)
+.toLowerCase()
+.includes(query)
+
+);
+
+}
+
+
+if(currentSort==="low"){
+
+list.sort(
+(a,b)=>money(a.price)-money(b.price)
+);
+
+}
+
+if(currentSort==="high"){
+
+list.sort(
+(a,b)=>money(b.price)-money(a.price)
+);
+
+}
+
+
+return list;
+
+}
+
+
+/* =========================
+RENDER PRODUCTS
+========================= */
+
+function render(){
+
+const list=getVisibleProducts();
+
+document.getElementById("count").textContent=
+String(list.length).padStart(2,"0")+" Pieces";
+
+
+if(list.length===0){
+
+document.getElementById("products").innerHTML=`
+
+<div class="empty">
+
+NO PRODUCTS FOUND
+
+<br><br>
+
+<span style="font-size:9px">
+Try another category or search term.
+</span>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+document.getElementById("products").innerHTML=
+
+list.map((product,index)=>`
+
+<article
+class="product"
+style="animation-delay:${index*40}ms"
+>
+
+<div class="product-image">
+
+<a href="detail.html?product=${encodeURIComponent(product.id)}">
+
+<img
+src="${escapeAttr(product.image)}"
+alt="${escapeAttr(product.name)}"
+loading="lazy"
+onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1200&q=80';"
+>
+
+</a>
+
+${index===0 && !searchTerm && currentSort===""
+?
+'<div class="tag">Featured</div>'
+:
+""}
+
+</div>
+
+
+<div class="product-info">
+
+<div class="category">
+${escapeHTML(product.category)}
+</div>
+
+<div class="name">
+
+<a href="detail.html?product=${encodeURIComponent(product.id)}">
+
+${escapeHTML(product.name)}
+
+</a>
+
+</div>
+
+<div class="price">
+${escapeHTML(product.price)}
+</div>
+
+<div class="actions">
+
+<a
+class="action"
+href="detail.html?product=${encodeURIComponent(product.id)}"
+>
+View
+</a>
+
+<a
+class="action buy"
+href="detail.html?product=${encodeURIComponent(product.id)}"
+>
+Add to Bag
+</a>
+
+</div>
+
+</div>
+
+</article>
+
+`).join("");
+
+}
+
+
+/* =========================
+FOOTER
+========================= */
+
+function renderFooter(){
+
+document.getElementById("footerCategories").innerHTML=
+
+categories.map(category=>`
+
+<a href="product.html?category=${encodeURIComponent(category)}">
+
+${escapeHTML(category)}
+
+</a>
+
+`).join("");
+
+}
+
+
+/* =========================
+SORT
+========================= */
+
+function sortProducts(type){
+
+currentSort=type;
+
+document
+.getElementById("lowBtn")
+.classList.toggle("active",type==="low");
+
+document
+.getElementById("highBtn")
+.classList.toggle("active",type==="high");
+
+render();
+
+}
+
+
+/* =========================
+SEARCH
+========================= */
+
+document
+.getElementById("searchInput")
+.addEventListener("input",function(){
+
+searchTerm=this.value.trim();
+
+render();
+
+});
+
+
+/* =========================
+BAG COUNT
+========================= */
+
+function updateBagCount(){
+
+const badge=
+document.getElementById("bagCount");
+
+let cart=[];
+
+try{
+
+cart=
+JSON.parse(
+localStorage.getItem("luneraCart")
+)||[];
+
+}catch(error){
+
+cart=[];
+
+}
+
+
+const count=
+cart.reduce(
+(total,item)=>
+total+(Number(item.quantity)||1),
+0
+);
+
+
+badge.textContent=count;
+
+}
+
+
+/* =========================
+STORAGE UPDATES
+========================= */
+
+window.addEventListener(
+"storage",
+function(event){
+
+if(
+event.key==="luneraCart" ||
+event.key==="luneraProducts" ||
+event.key==="luneraCategories"
+){
+
+location.reload();
+
+}
+
+});
+
+
+/* =========================
+INITIALIZE
+========================= */
+
+renderCategories();
+
+renderFooter();
+
+render();
+
+updateBagCount();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LUNÉRA — Checkout</title>
+
+<link rel="icon" type="image/png" href="/lunera/lunera-logo.png?v=8">
+
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cormorant+Garamond:wght@400;500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#f7f4ef;
+color:#151212;
+font-family:'Montserrat',sans-serif;
+-webkit-font-smoothing:antialiased;
+}
+
+header{
+background:#151212;
+padding:27px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:#fff;
+text-decoration:none;
+font:500 29px 'Bodoni Moda',serif;
+letter-spacing:2px;
+}
+
+.back{
+color:#fff;
+text-decoration:none;
+font:500 9px 'Montserrat',sans-serif;
+letter-spacing:2px;
+transition:.25s;
+}
+
+.back:hover{
+opacity:.55;
+}
+
+.container{
+width:84%;
+max-width:1100px;
+margin:65px auto 90px;
+}
+
+h1{
+font:400 60px 'Bodoni Moda',serif;
+letter-spacing:-1px;
+margin-bottom:45px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:minmax(0,1fr) 400px;
+gap:70px;
+align-items:start;
+}
+
+h2{
+font:400 30px 'Cormorant Garamond',serif;
+margin-bottom:25px;
+}
+
+.form-box{
+background:#fff;
+padding:32px;
+}
+
+input,
+textarea,
+select{
+width:100%;
+padding:15px 14px;
+border:1px solid rgba(21,18,18,.2);
+background:#fff;
+color:#151212;
+margin-bottom:14px;
+font:400 11px 'Montserrat',sans-serif;
+letter-spacing:.2px;
+border-radius:0;
+}
+
+input::placeholder,
+textarea::placeholder{
+color:#151212;
+opacity:.5;
+}
+
+textarea{
+height:105px;
+resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+outline:none;
+border-color:#17352b;
+}
+
+button{
+width:100%;
+padding:18px;
+background:#17352b;
+color:#fff;
+border:0;
+font:500 9px 'Montserrat',sans-serif;
+letter-spacing:3px;
+cursor:pointer;
+transition:.25s;
+}
+
+button:hover{
+background:#244b3e;
+}
+
+.order-box{
+background:#fff;
+padding:32px;
+}
+
+.order{
+border-top:1px solid #151212;
+padding-top:5px;
+}
+
+.order-row{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:20px;
+padding:15px 0;
+font:400 10px/1.6 'Montserrat',sans-serif;
+letter-spacing:.5px;
+}
+
+.order-row span:last-child{
+white-space:nowrap;
+}
+
+.total{
+border-top:1px solid rgba(21,18,18,.15);
+margin-top:8px;
+padding-top:22px;
+font-size:12px;
+letter-spacing:1px;
+}
+
+.shipping-note{
+font:400 9px/1.8 'Montserrat',sans-serif;
+letter-spacing:.7px;
+opacity:.55;
+margin-top:20px;
+}
+
+.error{
+color:#8a1c1c;
+font:400 9px/1.6 'Montserrat',sans-serif;
+letter-spacing:.7px;
+margin:-2px 0 15px;
+display:none;
+}
+
+.empty{
+text-align:center;
+padding:100px 20px;
+font:500 10px 'Montserrat',sans-serif;
+letter-spacing:2px;
+opacity:.65;
+}
+
+.empty a{
+display:inline-block;
+margin-top:25px;
+color:#151212;
+text-decoration:none;
+border-bottom:1px solid #151212;
+padding-bottom:4px;
+font-size:9px;
+letter-spacing:2px;
+}
+
+.success{
+display:none;
+text-align:center;
+padding:100px 20px;
+}
+
+.success h2{
+font:400 48px 'Bodoni Moda',serif;
+margin-bottom:20px;
+}
+
+.success p{
+font:400 10px/2 'Montserrat',sans-serif;
+letter-spacing:.7px;
+opacity:.65;
+margin-bottom:32px;
+}
+
+.success a{
+display:inline-block;
+background:#17352b;
+color:#fff;
+text-decoration:none;
+padding:17px 28px;
+font:500 9px 'Montserrat',sans-serif;
+letter-spacing:2px;
+transition:.25s;
+}
+
+.success a:hover{
+background:#244b3e;
+}
+
+@media(max-width:850px){
+
+header{
+padding:23px 6%;
+}
+
+.logo{
+font-size:25px;
+}
+
+.container{
+width:88%;
+margin-top:45px;
+}
+
+h1{
+font-size:48px;
+margin-bottom:35px;
+}
+
+.grid{
+grid-template-columns:1fr;
+gap:45px;
+}
+
+.form-box,
+.order-box{
+padding:25px;
+}
+
+}
+
+@media(max-width:500px){
+
+header{
+padding:20px 6%;
+}
+
+.logo{
+font-size:23px;
+}
+
+.back{
+font-size:8px;
+}
+
+.container{
+width:88%;
+margin:40px auto 70px;
+}
+
+h1{
+font-size:42px;
+}
+
+h2{
+font-size:27px;
+}
+
+.form-box,
+.order-box{
+padding:20px;
+}
+
+.success{
+padding:70px 10px;
+}
+
+.success h2{
+font-size:39px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="logo">LUNÉRA</a>
+
+<a href="cart.html" class="back">
+BACK TO BAG
+</a>
+
+</header>
+
+
+<main class="container">
+
+<h1>Checkout</h1>
+
+
+<div id="checkoutContent">
+
+<div class="grid">
+
+
+<div>
+
+<h2>Delivery Details</h2>
+
+<div class="form-box">
+
+<form id="form">
+
+<input
+id="name"
+placeholder="Full Name"
+required
+autocomplete="name"
+>
+
+<input
+id="phone"
+placeholder="Phone Number"
+required
+inputmode="numeric"
+maxlength="10"
+autocomplete="tel"
+>
+
+<input
+id="email"
+type="email"
+placeholder="Email Address"
+autocomplete="email"
+>
+
+<input
+id="address"
+placeholder="Address"
+required
+autocomplete="street-address"
+>
+
+<input
+id="city"
+placeholder="City"
+required
+autocomplete="address-level2"
+>
+
+<input
+id="state"
+placeholder="State"
+required
+autocomplete="address-level1"
+>
+
+<input
+id="pin"
+placeholder="PIN Code"
+required
+inputmode="numeric"
+maxlength="6"
+autocomplete="postal-code"
+>
+
+<textarea
+id="notes"
+placeholder="Additional instructions (optional)"
+></textarea>
+
+<div id="error" class="error"></div>
+
+<button type="submit">
+PLACE ORDER
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<div>
+
+<h2>Order Summary</h2>
+
+<div class="order-box">
+
+<div id="order" class="order"></div>
+
+<div class="shipping-note">
+Shipping is currently shown as FREE. Actual delivery and payment processing will require a real backend or payment/shipping service.
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div id="success" class="success">
+
+<h2>Order Received</h2>
+
+<p id="successText"></p>
+
+<a href="index.html">
+RETURN TO LUNÉRA
+</a>
+
+</div>
+
+
+</main>
+
+
+<script>
+
+const cart =
+JSON.parse(localStorage.getItem("luneraCart")) || [];
+
+const order =
+document.getElementById("order");
+
+let total = 0;
+
+
+function money(value){
+
+return Number(
+String(value)
+.replace(/[₹,]/g,"")
+)||0;
+
+}
+
+
+function escapeHTML(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+if(!cart.length){
+
+document.getElementById("checkoutContent").innerHTML = `
+
+<div class="empty">
+
+Your bag is empty.
+
+<br>
+
+<a href="product.html">
+DISCOVER LUNÉRA
+</a>
+
+</div>
+
+`;
+
+}else{
+
+order.innerHTML = cart.map(item => {
+
+const quantity =
+Math.max(1,Number(item.quantity)||1);
+
+const amount =
+money(item.price) * quantity;
+
+total += amount;
+
+return `
+
+<div class="order-row">
+
+<span>
+${escapeHTML(item.name)} × ${quantity}
+</span>
+
+<span>
+₹${amount.toLocaleString("en-IN")}
+</span>
+
+</div>
+
+`;
+
+}).join("") + `
+
+<div class="order-row total">
+
+<strong>
+TOTAL
+</strong>
+
+<strong>
+₹${total.toLocaleString("en-IN")}
+</strong>
+
+</div>
+
+`;
+
+}
+
+
+document.getElementById("form").onsubmit = function(e){
+
+e.preventDefault();
+
+if(!cart.length){
+
+alert("Your bag is empty.");
+
+return;
+
+}
+
+
+const name =
+document.getElementById("name").value.trim();
+
+const phone =
+document.getElementById("phone").value.trim();
+
+const email =
+document.getElementById("email").value.trim();
+
+const address =
+document.getElementById("address").value.trim();
+
+const city =
+document.getElementById("city").value.trim();
+
+const state =
+document.getElementById("state").value.trim();
+
+const pin =
+document.getElementById("pin").value.trim();
+
+const notes =
+document.getElementById("notes").value.trim();
+
+const error =
+document.getElementById("error");
+
+
+if(!/^[0-9]{10}$/.test(phone)){
+
+error.textContent =
+"Please enter a valid 10-digit phone number.";
+
+error.style.display = "block";
+
+return;
+
+}
+
+
+if(!/^[0-9]{6}$/.test(pin)){
+
+error.textContent =
+"Please enter a valid 6-digit PIN code.";
+
+error.style.display = "block";
+
+return;
+
+}
+
+
+error.style.display = "none";
+
+
+const orderId =
+"LUN" + Date.now().toString().slice(-8);
+
+
+const newOrder = {
+
+id:orderId,
+
+date:new Date().toISOString(),
+
+customer:{
+name:name,
+phone:phone,
+email:email,
+address:address,
+city:city,
+state:state,
+pin:pin,
+notes:notes
+},
+
+items:JSON.parse(JSON.stringify(cart)),
+
+total:total,
+
+status:"New"
+
+};
+
+
+const orders =
+JSON.parse(localStorage.getItem("luneraOrders")) || [];
+
+
+orders.push(newOrder);
+
+
+localStorage.setItem(
+"luneraOrders",
+JSON.stringify(orders)
+);
+
+
+localStorage.removeItem("luneraCart");
+
+
+document.getElementById("checkoutContent").style.display = "none";
+
+document.getElementById("success").style.display = "block";
+
+
+document.getElementById("successText").textContent =
+"Thank you, " + name +
+". Your order " + orderId +
+" has been received. Order total: ₹" +
+total.toLocaleString("en-IN") + ".";
+
+};
+
+</script>
+
+</body>
+</html>
